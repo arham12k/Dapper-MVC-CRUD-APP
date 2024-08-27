@@ -38,7 +38,17 @@ namespace DapperMvcDemo.UI.Controllers
             return RedirectToAction(nameof(Add));
         }
 
-        public async Task<IActionResult> Edit(int id)
+
+
+
+		public async Task<IActionResult> Details(int id)
+		{
+			var person = await _personRepo.GetByIdAsync(id);
+			//if (person == null)
+			//    return NotFound();
+			return View(person);
+		}
+		public async Task<IActionResult> Edit(int id)
         {
             var person = await _personRepo.GetByIdAsync(id);
             //if (person == null)
